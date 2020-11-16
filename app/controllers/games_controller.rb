@@ -2,13 +2,13 @@ require 'open-uri'
 
 class GamesController < ApplicationController
   def new
-    @array = []
-    10.times { @array << ('A'..'Z').to_a.sample }
-    @array
+    @@array = []
+    10.times { @@array << ('A'..'Z').to_a.sample }
+    @array = @@array
   end
 
   def score
-    arr = new
+    arr = @@array
     letters = build_grid_string(arr)
     word = params[:score].upcase
     chck_contains = check_if_contains(word, arr)
